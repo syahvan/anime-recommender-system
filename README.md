@@ -1,7 +1,9 @@
 # Laporan Proyek _Anime Recommender System_ - Syahvan Alviansyah Diva Ritonga
 ## Project Overview
 
-![Gambar 1](img/anya.gif)
+<p align="center">
+  <img src="img/anya.gif" />
+</p>
 
 Anime telah menjadi bagian tak terpisahkan dari budaya populer di Indonesia, merajai hati para penggemar selama bertahun-tahun. Dari klasik seperti Doraemon dan Sailormoon hingga saga epik seperti Dragonball, One Piece, dan Naruto, keduanya telah mengukir jejaknya di layar televisi dan di hati para penggemar di seluruh negeri. Stasiun televisi pun tak ragu-ragu memanjakan penonton dengan aksi seru dan petualangan dari dunia anime yang memikat.
 
