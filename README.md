@@ -3,6 +3,8 @@
 
 <p align="center">
   <img src="img/one-piece.gif" />
+</p>
+<p align="center">
   Gambar 1. One Piece
 </p>
 
