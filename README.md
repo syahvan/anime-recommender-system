@@ -38,7 +38,7 @@ Adapun tujuan dilakukannya proyek ini yaitu:
 - Untuk mengetahui perfoma model dilakukan pengecekan performa dengan metrik evaluasi seperti _Precision_, _Cosine similarity_, dan _Root Mean Squared Error_ (RMSE).
 
 ## Data Understanding
-Dataset yang digunakan merupakan data anime yang berasal dari myanimelist.net pada laman [Kaggle](https://www.kaggle.com/datasets/timnosov/anime-recommendations-database-clean/). Dataset tersebut berisikan 2 file csv, yaitu file *Anime* dan *Rating*. File Anime.csv yang terdiri dari 7 kolom dan 12294 baris, Sedangkan file Rating.csv terdiri dari 3 kolom dan 7813737 baris. 
+Dataset yang digunakan merupakan data anime yang berasal dari [MyAnimeList.net](https://myanimelist.net/) pada laman [Kaggle](https://www.kaggle.com/datasets/timnosov/anime-recommendations-database-clean/). Dataset tersebut berisikan 2 file csv, yaitu file *Anime* dan *Rating*. File Anime.csv yang terdiri dari 7 kolom dan 12294 baris, Sedangkan file Rating.csv terdiri dari 3 kolom dan 7813737 baris. 
 
 Berikut merupakan informasi lebih detail dari masing masing kolom dataset:
 
@@ -57,7 +57,7 @@ Berikut merupakan informasi lebih detail dari masing masing kolom dataset:
 2.   `anime_id`: anime yang telah dinilai pengguna ini.
 3.   `rating`: anime yang telah dinilai oleh pengguna ini, rating dari 10 pengguna ini telah ditetapkan (-1 jika pengguna menontonnya tetapi tidak menetapkan peringkat).
 
-Untuk memahami data lebih lanjut, dilakukan **Analisis Univariat** serta ****Visualisasi Data****
+Untuk memahami data lebih lanjut, dilakukan **Analisis Univariat** serta **Visualisasi Data**
 
 Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan informasi yang terdapat pada satu variabel. Jenis visualisasi ini umumnya digunakan untuk memberikan gambaran terkait distribusi sebuah variabel dalam suatu dataset. Sebagai alat bantu analisis, dilakukan teknik Visualisasi Data. Memvisualisasikan data memberikan wawasan mendalam tentang perilaku berbagai fitur-fitur yang tersedia dalam dataset. Teknik visualisasi yang digunakan pada pembuatan model proyek ini adalah dengan menggunakan barplot yang digunakan untuk memplot distribusi data.
 
