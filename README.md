@@ -67,7 +67,7 @@ Untuk memahami data lebih lanjut, dilakukan **Analisis Univariat** serta **Visua
 
 Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan informasi yang terdapat pada satu variabel. Jenis visualisasi ini umumnya digunakan untuk memberikan gambaran terkait distribusi sebuah variabel dalam suatu dataset. Sebagai alat bantu analisis, dilakukan teknik Visualisasi Data. Memvisualisasikan data memberikan wawasan mendalam tentang perilaku berbagai fitur-fitur yang tersedia dalam dataset.
 
-Berikut adalah hasil **Exploratory Data Analysis* (EDA) menggunakan Analisis Univariat:
+Berikut adalah hasil *Exploratory Data Analysis* (EDA) menggunakan Analisis Univariat:
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/1-top-komunitas-anime.png" />
