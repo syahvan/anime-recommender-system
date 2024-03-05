@@ -70,10 +70,77 @@ Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan i
 Berikut adalah hasil **Exploratory Data Analysis* (EDA) menggunakan Analisis Univariat:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/anime.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/1-top-komunitas-anime.jpg" />
   <br>
-  Gambar 1. Anime
+  Gambar 2. Top Komunitas Anime
 </p>
+
+💡 Insights:
+
+Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin dan Sword Art Online.
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/2-distribusi-kategori-anime.jpg" />
+  <br>
+  Gambar 3. Distribusi Kategori Anime
+</p>
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/3-top-kategori-anime.jpg" />
+  <br>
+  Gambar 4. Top Kategori Anime
+</p>
+
+💡 Insights:
+
+- Ada 3430 anime atau 33.54% dari total anime yang disiarkan di TV.
+- Sebanyak 2219 anime atau 21.7% dari total anime disiarkan sebagai film.
+- Terdapat 1936 anime atau 18.93% dari total anime yang disiarkan sebagai OVA. Hal tersebut lebih banyak dari ONA yang mencakup 633 anime atau 6.19% dari total anime.
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/4-top-anime-rating.jpg" />
+  <br>
+  Gambar 5. Top Rating Anime
+</p>
+
+💡 Insights:
+
+Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitchen dan Mogura no Motoro.
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/5-distribusi-rating-anime.jpg" />
+  <br>
+  Gambar 6. Distribusi Rating Anime dan Distribusi Rating Anime yang Diberikan Oleh User
+</p>
+
+💡 Insights:
+
+- Sebagian besar rating Anime tersebar antara 5.5 - 8.0
+- Sebagian besar rating pengguna tersebar antara 6.0 - 10.0
+- Modus dari distribusi rating pengguna berada di sekitar 8.0
+- Rating user bernilai -1 merupakan outliers dalam rating pengguna yang dapat diabaikan
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-top-genre.jpg" />
+  <br>
+  Gambar 7. Top Genre Anime
+</p>
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-wordcloud-genre.jpg" />
+  <br>
+  Gambar 8. Wordcloud Genre
+</p>
+
+💡 Insights:
+
+Terdapat 39 genre dengan genre Comedy memiliki jumlah terbanyak diikuti oleh genre Action dan Adventure
 
 ## Data Preparation
 Dalam _data preparation_, prinsip **"_garbage in, garbage out_"** berlaku. Artinya, jika data yang digunakan untuk melatih model tidak berkualitas baik, maka hasil prediksi dari model tersebut juga akan tidak akurat atau tidak dapat diandalkan. Dengan memastikan data yang digunakan untuk melatih model memiliki kualitas yang baik, model yang dihasilkan dapat lebih andal dalam merekomendasikan anime.
@@ -104,38 +171,156 @@ Untuk tahap pemodelan, digunakan dua algoritma, yakni _Content Based Filtering_ 
 
 _Content Based Filtering_ adalah salah satu pendekatan dalam sistem rekomendasi dimana rekomendasi diberikan berdasarkan karakteristik atau konten dari item yang sudah ada. Dalam konteks sistem rekomendasi anime, algoritma ini menganalisis atribut-atribut dari setiap anime, seperti genre, kategori, dan _rating_, untuk menghasilkan rekomendasi kepada pengguna.
 
-Beberapa parameter yang dapat digunakan dalam pemodelan _Content Based Filtering_ ini adalah:
+Langkah-langkah dalam membangun model sebagai berikut:
 
-- **_TF-IDF Weighting_**: Digunakan untuk memberi bobot pada kata-kata dalam deskripsi atau atribut lain dari item berdasarkan frekuensi kemunculan kata dalam dokumen dan frekuensi kemunculan kata di seluruh korpus dokumen.
-- **_Cosine Similarity_**: Digunakan untuk mengukur seberapa mirip dua vektor dalam ruang fitur. Dalam konteks _Content Based Filtering_, digunakan untuk mengukur kemiripan antara item yang direkomendasikan dengan item yang telah dikonsumsi atau disukai oleh pengguna berdasarkan atribut atau fitur yang dimiliki oleh item tersebut.
-- **_Feature Selection_**: Pemilihan fitur yang relevan untuk digunakan dalam pemodelan. Hal ini penting untuk menghindari _overfitting_ dan meningkatkan kualitas rekomendasi dengan mempertimbangkan hanya fitur-fitur yang memiliki dampak signifikan dalam menentukan kemiripan antara item.
+1. Memulai proses pengembangan dengan melakukan ekstraksi fitur dari teks menggunakan TfidfVectorizer yang disediakan oleh library sklearn.feature_extraction.text.
+2. Mengonversi vektor TF-IDF yang dihasilkan menjadi bentuk matriks menggunakan metode `todense()`.
+3. Membuat dataframe untuk menampilkan matriks TF-IDF, dengan kolom yang mewakili genre dan baris yang mewakili judul.
+4. Menghitung kemiripan kosinus antar dokumen pada matriks TF-IDF menggunakan fungsi `cosine_similarity()`.
+5. Membuat dataframe dari hasil perhitungan kemiripan kosinus, di mana judul anime menjadi baris dan kolom.
+6. Membuat fungsi `rekomendasi_anime` yang akan merekomendasikan anime berdasarkan kemiripan yang ada dalam dataframe tersebut.
+
+`def rekomendasi_anime(title, similarity_data=cosine_sim_df, items=data_genre[['name', 'genre', 'type']], k=5)`
+
+     Parameter:
+     - `title`: tipe data string (str) judul anime (index kemiripan dataframe)
+     - `similarity_data` : tipe data pd.DataFrame (object) kesamaan dataframe, simetrik, dengan anime sebagai indeks dan kolom
+     - `items` : tipe data pd.DataFrame (object) mengandung kedua nama dan fitur lainnya yang digunakan untuk mendefinisikan kemiripan
+     - `k` : tipe data integer (int) Banyaknya jumlah rekomendasi yang diberikan
+
+Contoh seseorang yang telah menonton anime 'Naruto: Shippuuden'. Ia suka dengan film anime tersebut. Lalu ia ingin mencari anime yang secara cerita dan alur mirip dengan 'Naruto: Shippuuden'
+
+<p align="center">
+    <br>
+    <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/naruto.gif"/>
+</p>
+
+Maka, sistem akan merekomendasikan anime-anime yang memiliki kesamaan fitur dengan anime 'Naruto: Shippuuden'
+
+|                  title_name                 |                     genre                    |     Type      | Similarity Score |         
+|:-------------------------------------------:|:--------------------------------------------:|:-------------:|:----------------:|
+|                    Boruto: Naruto the Movie |        Action, Comedy, Martial Arts, Shounen |       Special |              1.0 |
+|                                 Naruto x UT |        Action, Comedy, Martial Arts, Shounen |           OVA |              1.0 |
+|        Naruto Shippuuden: Sunny Side Battle |        Action, Comedy, Martial Arts, Shounen |       Special |              1.0 |
+| Naruto: Shippuuden Movie 4 - The Lost Tower |        Action, Comedy, Martial Arts, Shounen |         Movie |              1.0 |
+|                                      Naruto |        Action, Comedy, Martial Arts, Shounen |            TV |              1.0 |
+
 
 Kelebihan dari _Content Based Filtering_ adalah kemampuannya dalam memberikan rekomendasi yang personal dan relevan untuk setiap pengguna berdasarkan preferensi mereka sendiri, serta tidak terlalu terpengaruh oleh _cold start problem_. Namun, kelemahannya adalah kurangnya variasi dalam rekomendasi yang diberikan karena hanya mempertimbangkan item yang memiliki atribut atau fitur yang mirip dengan item yang telah dikonsumsi atau disukai oleh pengguna.
 
 ### 2. _Collaborative Filtering_
 
-_Collaborative Filtering_ adalah pendekatan lain dalam sistem rekomendasi dimana rekomendasi diberikan berdasarkan perilaku atau preferensi pengguna serta kelompok pengguna lainnya. Dalam konteks sistem rekomendasi anime, algoritma ini menganalisis perilaku penonton, seperti _rating_ yang diberikan oleh pengguna pada anime tertentu, untuk memberikan rekomendasi kepada pengguna. Terdapat dua jenis utama dari _Collaborative Filtering_:
+_Collaborative Filtering_ adalah pendekatan lain dalam sistem rekomendasi dimana rekomendasi diberikan berdasarkan perilaku atau preferensi pengguna serta kelompok pengguna lainnya. Dalam konteks sistem rekomendasi anime, algoritma ini menganalisis perilaku penonton, seperti _rating_ yang diberikan oleh pengguna pada anime tertentu, untuk memberikan rekomendasi kepada pengguna. 
 
-- **_User-Based Collaborative Filtering_**: Metode ini mencari kemiripan antara pengguna berdasarkan riwayat interaksi mereka dengan item. Rekomendasi dibuat dengan mengidentifikasi pengguna-pengguna yang memiliki preferensi yang mirip dengan pengguna yang ingin direkomendasikan, lalu memperoleh item yang belum dikonsumsi oleh pengguna tersebut dari pengguna-pengguna yang mirip tersebut.
-- **_Item-Based Collaborative Filtering_**: Metode ini mencari kemiripan antara item berdasarkan seberapa sering item-item tersebut dikonsumsi bersama oleh pengguna. Rekomendasi dibuat dengan mengidentifikasi item-item yang memiliki pola konsumsi yang mirip, lalu merekomendasikan item-item tersebut kepada pengguna yang memiliki riwayat konsumsi yang mirip.
+Langkah Langkah dalam membangun model:
+1. Melakukan proses encoding angka ke user_id, anime_id ke dalam indeks integer.
+2. Mapping user_id ke dataframe user dan Mapping anime_id ke dataframe anime melalui embedding matrix.
+3. Mendapatkan jumlah user dan jumlah anime.
+4. Mencari nilai minimum rating dan nilai maksimum rating.
+5. Mengacak dataset.
+6. Membuat variabel x untuk mencocokkan data user dan anime menjadi satu value dan variabel y untuk membuat rating dari hasil.
+7. Membagi menjadi 80% data train dan 20% data validasi.
+8. Memanggil class RecommenderNet() dari library tf.keras
+9. Menginisiasi model RecommenderNet() yang memiliki parameter: num_users, num_anime, embedding_size=50.   
+10. Setelah itu model bekerja dengan menghitung skor kecocokan antara user_embbeding dan anime_embbeding melalui operasi perkalian dot product.
+11. Lalu menambahkan bias per user dan bias per anime.
+12. Proses pencocokan skor(score matching) diskalakan ke interval [0, 1] melalui sigmoid function.
+13. Melakukan inisialsisasi model. dengan parameter num_user, num_anime dan embbeding berdimensi 50.
+14. Mengcompile model. Pada proses compile, model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation.
+15. Melakukan proses training-validate data dan memvisualisasikan hasil dari metrics evaluasi root mean squared error (RMSE) menggunakan library matplotlib.
+16. Lalu melakukan prediksi.
 
-Beberapa parameter yang dapat digunakan dalam pemodelan _Collaborative Filtering_ ini adalah:
+`model = RecommenderNet(num_users, num_anime, 128)`
 
-- **_Similarity Measure_**: Metrik atau fungsi yang digunakan untuk mengukur kemiripan antara pengguna atau item. Contoh metrik yang umum digunakan adalah _Cosine Similarity_, _Pearson Correlation_, atau _Jaccard Similarity_.
-- **_Neighborhood Size_**: Jumlah pengguna atau item yang akan dipertimbangkan dalam membuat rekomendasi untuk pengguna tertentu. Pengaturan yang tepat dari ukuran tetangga ini dapat mempengaruhi kualitas rekomendasi.
-- **_Rating Normalization_**: Normalisasi peringkat atau penilaian pengguna untuk memperhitungkan perbedaan dalam perilaku penilaian antara pengguna-pengguna atau item-item.
+     Parameter:
+     - `num_users`: jumlah id user anime
+     - `num_anime` : jumlah judul anime
+     - `embedding_size` : Melakukan embbeding(penyematan) pada user_id dan anime_id ke dalam vektor 128 dimensi. 
+
+    ```
+    Showing best anime recommendations for users: 1798
+
+    Anime with high ratings from user:
+    Ookami to Koushinryou II : Adventure, Fantasy, Historical, Romance
+    Toki wo Kakeru Shoujo : Adventure, Drama, Romance, Sci-Fi
+    Angel Beats! : Action, Comedy, Drama, School, Supernatural
+    Ookami to Koushinryou : Adventure, Fantasy, Historical, Romance
+    Kill la Kill : Action, Comedy, School, Super Power
+
+    Top 10 Anime recommendation:
+    Kimi no Na wa. : Drama, Romance, School, Supernatural
+    Fullmetal Alchemist: Brotherhood : Action, Adventure, Drama, Fantasy, Magic, Military, Shounen
+    Gintama° : Action, Comedy, Historical, Parody, Samurai, Sci-Fi, Shounen
+    Steins;Gate : Sci-Fi, Thriller
+    Gintama : Action, Comedy, Historical, Parody, Samurai, Sci-Fi, Shounen
+    Hunter x Hunter (2011) : Action, Adventure, Shounen, Super Power
+    Ginga Eiyuu Densetsu : Drama, Military, Sci-Fi, Space
+    Gintama Movie: Kanketsu-hen - Yorozuya yo Eien Nare : Action, Comedy, Historical, Parody, Samurai, Sci-Fi, Shounen
+    Gintama: Enchousen : Action, Comedy, Historical, Parody, Samurai, Sci-Fi, Shounen
+    Koe no Katachi : Drama, School, Shounen
+    ```
+
+Sebagai contoh, hasil di atas adalah rekomendasi untuk user dengan id 1798. Dari output tersebut, kita dapat membandingkan antara _Anime with high ratings_ from user dan _Top 10 Anime recommendation_ untuk user.
 
 Kelebihan dari _Collaborative Filtering_ adalah kemampuannya dalam memberikan rekomendasi yang beragam dan dapat menangani _cold start problem_ dengan baik. Namun, kelemahannya adalah kerentanan terhadap _sparsity data_ dan kebutuhan akan jumlah data yang besar untuk memberikan rekomendasi yang akurat.
 
 ### Result
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+### Metrik Evaluasi
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+#### 1. Cosine similarity
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+Cosine similarity mengukur kesamaan antara dua vektor dan menentukan apakah kedua vektor tersebut menunjuk ke arah yang sama. Ia menghitung sudut cosinus antara dua vektor. Semakin kecil sudut cosinus, semakin besar nilai cosine similarity. Cosine Similarity dituliskan dalam rumusan berikut
+
+$$ Cosine Similarity (A, B) = (A · B) / (||A|| * ||B||) $$ 
+
+dimana: 
+- (A·B)menyatakan produk titik dari vektor A dan B.
+- ||A|| mewakili norma Euclidean (magnitudo) dari vektor A.
+- ||B|| mewakili norma Euclidean (magnitudo) dari vektor B.
+
+Keuntungan dari cosine similarity adalah kemampuannya untuk mengukur kesamaan antara dua objek data berdasarkan sudut antara vektor yang mewakilinya, bukan jarak Euclidean di antara mereka. Hal ini bermanfaat karena walaupun dua objek data memiliki ukuran yang berbeda-beda dan terpisah jauh di ruang multidimensi, mereka masih bisa dianggap mirip jika sudut antara vektor mereka kecil. Dengan demikian, cosine similarity mampu menangkap orientasi atau arah dari objek data, yang merupakan informasi yang penting dalam analisis dan pengelompokan data.
+
+Berikut merupakan contoh _Matrix Cosine Similarity_:
+
+|       **name**                                     | Cossette no Shouzou | Sekai Meisaku Douwa: Wow! Maerchen Oukoku | Wonderful Days | Kitte no Gensou | 
+|----------------------------------------------------|---------------------|-------------------------------------------|----------------|-----------------|
+| Inazuma Eleven                                     | 0.000000            | 0.0                                       | 0.000000       | 0.000000        |
+| World Trigger                                      | 0.179823            | 0.0                                       | 0.457044       | 0.000000        |
+| Bulg-eunmae                                        | 0.000000            | 0.0                                       | 0.000000       | 0.000000        |
+| Higurashi no Naku Koro ni Special: Nekogoroshi-hen | 0.000000            | 0.0                                       | 0.000000       | 0.427819        |
+| Giga Tribe                                         | 0.000000            | 0.0                                       | 0.000000       | 0.236277        |
+
+Pada perhitungan cosine similarity, skor kesamaan berkisar dari 0 hingga 1, dengan 0 sebagai yang terendah (paling tidak mirip) dan 1 sebagai yang tertinggi (paling mirip).
+
+#### 2. Root Mean Squared Error
+
+RMSE adalah metode evaluasi yang umum digunakan dalam collaborative filtering untuk mengukur seberapa akurat model dalam memprediksi peringkat atau preferensi pengguna terhadap item tertentu. RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai sebenarnya dengan nilai prediksi.
+
+Rumus RMSE:
+
+RMSE = sqrt(Σ(actual_rating - predicted_rating)^2 / n)
+
+dimana:
+- `actual_rating` adalah nilai peringkat yang sebenarnya oleh pengguna.
+- `predicted_rating` adalah nilai peringkat yang diprediksi oleh model.
+- `n` adalah jumlah pengukuran.
+
+RMSE memiliki keuntungan dalam evaluasi model collaborative filtering karena memberikan gambaran yang jelas tentang seberapa akurat model dalam memprediksi preferensi pengguna terhadap item. Nilai RMSE yang lebih rendah menunjukkan tingkat akurasi yang lebih tinggi. Selain itu, interpretasinya yang mudah dimengerti dan konsistensinya dalam menangani outlier atau kesalahan besar membuat RMSE menjadi metode evaluasi yang efektif dan dapat diandalkan dalam pengembangan model rekomendasi.
+
+## Conclusion
+
+Sistem rekomendasi ini dirancang untuk mempermudah pengguna dalam menemukan anime sesuai dengan minat mereka. Untuk pengguna baru yang belum memiliki riwayat menonton anime, sistem rekomendasi menggunakan collaborative filtering dapat digunakan untuk merekomendasikan anime berdasarkan rating yang diberikan oleh pengguna lain. Sedangkan untuk pengguna yang telah memiliki riwayat menonton anime, sistem rekomendasi menggunakan content-based filtering dapat digunakan untuk membantu mereka memilih anime berdasarkan genre atau plot yang mirip dengan anime yang telah mereka tonton sebelumnya.
+
+Berikut merupakan hasil dari Root Mean Squared Error dari model dengan Collaborative Filtering:
+
+<p align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-wordcloud-genre.jpg" />
+  <br>
+  Gambar 9. Wordcloud Genre
+</p>
 
 ## References
 
