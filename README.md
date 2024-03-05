@@ -75,7 +75,7 @@ Berikut adalah hasil **Exploratory Data Analysis* (EDA) menggunakan Analisis Uni
   Gambar 2. Top Komunitas Anime
 </p>
 
-💡 Insights:
+💡 _Insights_:
 
 Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin dan Sword Art Online.
 
@@ -93,7 +93,7 @@ Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin 
   Gambar 4. Top Kategori Anime
 </p>
 
-💡 Insights:
+💡 _Insights_:
 
 - Ada 3430 anime atau 33.54% dari total anime yang disiarkan di TV.
 - Sebanyak 2219 anime atau 21.7% dari total anime disiarkan sebagai film.
@@ -106,7 +106,7 @@ Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin 
   Gambar 5. Top Rating Anime
 </p>
 
-💡 Insights:
+💡 _Insights_:
 
 Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitchen dan Mogura no Motoro.
 
@@ -117,7 +117,7 @@ Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitch
   Gambar 6. Distribusi Rating Anime dan Distribusi Rating Anime yang Diberikan Oleh User
 </p>
 
-💡 Insights:
+💡 _Insights_:
 
 - Sebagian besar rating Anime tersebar antara 5.5 - 8.0
 - Sebagian besar rating pengguna tersebar antara 6.0 - 10.0
@@ -138,7 +138,7 @@ Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitch
   Gambar 8. Wordcloud Genre
 </p>
 
-💡 Insights:
+💡 _Insights_:
 
 Terdapat 39 genre dengan genre Comedy memiliki jumlah terbanyak diikuti oleh genre Action dan Adventure
 
@@ -269,9 +269,9 @@ Kelebihan dari _Collaborative Filtering_ adalah kemampuannya dalam memberikan re
 ## Evaluation
 ### Metrik Evaluasi
 
-#### 1. Cosine similarity
+#### 1. _Cosine similarity_
 
-Cosine similarity mengukur kesamaan antara dua vektor dan menentukan apakah kedua vektor tersebut menunjuk ke arah yang sama. Ia menghitung sudut cosinus antara dua vektor. Semakin kecil sudut cosinus, semakin besar nilai cosine similarity. Cosine Similarity dituliskan dalam rumusan berikut
+_Cosine similarity_ mengukur kesamaan antara dua vektor dan menentukan apakah kedua vektor tersebut menunjuk ke arah yang sama. Ia menghitung sudut cosinus antara dua vektor. Semakin kecil sudut cosinus, semakin besar nilai _cosine similarity_. _Cosine Similarity_ dituliskan dalam rumusan berikut
 
 $$ Cosine Similarity (A, B) = (A · B) / (||A|| * ||B||) $$ 
 
@@ -280,7 +280,7 @@ dimana:
 - ||A|| mewakili norma Euclidean (magnitudo) dari vektor A.
 - ||B|| mewakili norma Euclidean (magnitudo) dari vektor B.
 
-Keuntungan dari cosine similarity adalah kemampuannya untuk mengukur kesamaan antara dua objek data berdasarkan sudut antara vektor yang mewakilinya, bukan jarak Euclidean di antara mereka. Hal ini bermanfaat karena walaupun dua objek data memiliki ukuran yang berbeda-beda dan terpisah jauh di ruang multidimensi, mereka masih bisa dianggap mirip jika sudut antara vektor mereka kecil. Dengan demikian, cosine similarity mampu menangkap orientasi atau arah dari objek data, yang merupakan informasi yang penting dalam analisis dan pengelompokan data.
+Keuntungan dari _cosine similarity_ adalah kemampuannya untuk mengukur kesamaan antara dua objek data berdasarkan sudut antara vektor yang mewakilinya, bukan jarak Euclidean di antara mereka. Hal ini bermanfaat karena walaupun dua objek data memiliki ukuran yang berbeda-beda dan terpisah jauh di ruang multidimensi, mereka masih bisa dianggap mirip jika sudut antara vektor mereka kecil. Dengan demikian, _cosine similarity_ mampu menangkap orientasi atau arah dari objek data, yang merupakan informasi yang penting dalam analisis dan pengelompokan data.
 
 Berikut merupakan contoh _Matrix Cosine Similarity_:
 
@@ -292,11 +292,11 @@ Berikut merupakan contoh _Matrix Cosine Similarity_:
 | Higurashi no Naku Koro ni Special: Nekogoroshi-hen | 0.000000            | 0.0                                       | 0.000000       | 0.427819        |
 | Giga Tribe                                         | 0.000000            | 0.0                                       | 0.000000       | 0.236277        |
 
-Pada perhitungan cosine similarity, skor kesamaan berkisar dari 0 hingga 1, dengan 0 sebagai yang terendah (paling tidak mirip) dan 1 sebagai yang tertinggi (paling mirip).
+Pada perhitungan _cosine similarity_, skor kesamaan berkisar dari 0 hingga 1, dengan 0 sebagai yang terendah (paling tidak mirip) dan 1 sebagai yang tertinggi (paling mirip).
 
-#### 2. Root Mean Squared Error
+#### 2. _Root Mean Squared Error_
 
-RMSE adalah metode evaluasi yang umum digunakan dalam collaborative filtering untuk mengukur seberapa akurat model dalam memprediksi peringkat atau preferensi pengguna terhadap item tertentu. RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai sebenarnya dengan nilai prediksi.
+_Root Mean Squared Error_ (RMSE) adalah metode evaluasi yang umum digunakan dalam _collaborative filtering_ untuk mengukur seberapa akurat model dalam memprediksi peringkat atau preferensi pengguna terhadap item tertentu. RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai sebenarnya dengan nilai prediksi.
 
 Rumus RMSE:
 
@@ -307,20 +307,22 @@ dimana:
 - `predicted_rating` adalah nilai peringkat yang diprediksi oleh model.
 - `n` adalah jumlah pengukuran.
 
-RMSE memiliki keuntungan dalam evaluasi model collaborative filtering karena memberikan gambaran yang jelas tentang seberapa akurat model dalam memprediksi preferensi pengguna terhadap item. Nilai RMSE yang lebih rendah menunjukkan tingkat akurasi yang lebih tinggi. Selain itu, interpretasinya yang mudah dimengerti dan konsistensinya dalam menangani outlier atau kesalahan besar membuat RMSE menjadi metode evaluasi yang efektif dan dapat diandalkan dalam pengembangan model rekomendasi.
+RMSE memiliki keuntungan dalam evaluasi model _collaborative filtering_ karena memberikan gambaran yang jelas tentang seberapa akurat model dalam memprediksi preferensi pengguna terhadap item. Nilai RMSE yang lebih rendah menunjukkan tingkat akurasi yang lebih tinggi. Selain itu, interpretasinya yang mudah dimengerti dan konsistensinya dalam menangani _outlier_ atau kesalahan besar membuat RMSE menjadi metode evaluasi yang efektif dan dapat diandalkan dalam pengembangan model rekomendasi.
 
-## Conclusion
-
-Sistem rekomendasi ini dirancang untuk mempermudah pengguna dalam menemukan anime sesuai dengan minat mereka. Untuk pengguna baru yang belum memiliki riwayat menonton anime, sistem rekomendasi menggunakan collaborative filtering dapat digunakan untuk merekomendasikan anime berdasarkan rating yang diberikan oleh pengguna lain. Sedangkan untuk pengguna yang telah memiliki riwayat menonton anime, sistem rekomendasi menggunakan content-based filtering dapat digunakan untuk membantu mereka memilih anime berdasarkan genre atau plot yang mirip dengan anime yang telah mereka tonton sebelumnya.
-
-Berikut merupakan hasil dari Root Mean Squared Error dari model dengan Collaborative Filtering:
+Berikut merupakan hasil dari _Root Mean Squared Error_ dari model dengan _Collaborative Filtering:_
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-wordcloud-genre.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/rmse.jpg" />
   <br>
-  Gambar 9. Wordcloud Genre
+  Gambar 9. Grafik Root Mean Squared Error dari model dengan Collaborative Filtering
 </p>
+
+Dari grafik tersebut, terlihat bahwa nilai error akhir sebesar sekitar 0.13 dan error pada data validasi sebesar 0.13 pula. Nilai tersebut cukup bagus untuk sistem rekomendasi. Selain itu, nilai tersebut juga menandakan bahwa model tidak _overfitting_.
+
+## Conclusion
+
+Sistem rekomendasi ini dirancang untuk mempermudah pengguna dalam menemukan anime sesuai dengan minat mereka. Untuk pengguna baru yang belum memiliki riwayat menonton anime, sistem rekomendasi menggunakan _collaborative filtering_ dapat digunakan untuk merekomendasikan anime berdasarkan rating yang diberikan oleh pengguna lain. Sedangkan untuk pengguna yang telah memiliki riwayat menonton anime, sistem rekomendasi menggunakan _content-based filtering_ dapat digunakan untuk membantu mereka memilih anime berdasarkan genre atau plot yang mirip dengan anime yang telah mereka tonton sebelumnya.
 
 ## References
 
