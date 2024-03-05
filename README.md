@@ -20,16 +20,22 @@ Untuk mengatasi tantangan ini, perlu adanya pengembangan sebuah sistem yang dapa
 Berdasarkan latar belakang di atas, berikut ini batasan masalah yang dapat diselesaikan dengan proyek ini:
 
 - Bagaimana caranya mengembangkan sebuah sistem rekomendasi anime yang dapat disesuaikan dengan preferensi individu para penggemar anime?
-- Model apa yang paling efektif dalam memberikan rekomendasi kepada penggemar anime untuk memilih anime yang sesuai?
 - Bagaimana proses kerja sistem rekomendasi dalam memberikan rekomendasi kepada penggemar anime untuk memilih anime yang sesuai dengan preferensi mereka?
+- Berdasarkan eksplorasi dataset, bagaimana karakteristik dataset? Ada berapa banyak jumlah data? Fitur apa yang bisa dipilih untuk pengembangan model?
+- Bagaimana mengolah dataset agar dapat dibuat model sistem rekomendasi?
+- Bagimana membuat model sistem rekomendasi menggunakan _Content Based Filtering_ dan _Collaborative Filtering_?
+- Bagaimanna cara mengukur nilai perfoma model sistem rekomendasi yang telah dibangun?
 
 ### Goals
 
 Adapun tujuan dilakukannya proyek ini yaitu:
 
 - Membuat suatu sistem rekomendasi anime bertujuan untuk memberikan kemudahan kepada penggemar anime dalam menemukan judul-judul anime yang cocok dengan preferensi mereka.
-- Melakukan perbandingan kinerja berbagai model dalam sistem rekomendasi anime guna menemukan yang paling efektif.
 - Menjelaskan prinsip kerja dari algoritma-algoritma model yang digunakan dalam sistem rekomendasi untuk memberikan rekomendasi anime kepada penggemar anime berdasarkan data seperti preferensi sebelumnya, _rating_, atau informasi lainnya.
+- Mengeksplorasi informasi dataset dan melihat fitur yang paling memungkinkan dipilih untuk pengembangan model
+- Melakukan proses Data Preparation seperti _Vectorizing_, _Encoded_, dan _Data Spliting_ sebelum pembuatan model
+- Membuat model sistem rekomendasi _Content Based Filtering_ dan _Collaborative Filtering_ berdasarkan fitur yang telah dipilih dari dataset
+- Mengukur perfoma model sistem rekomendasi dengan menggunakan metrik evaluasi
 
 ### Solution Statements
 
