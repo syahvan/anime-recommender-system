@@ -69,7 +69,11 @@ Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan i
 
 Berikut adalah hasil **Exploratory Data Analysis* (EDA) menggunakan Analisis Univariat:
 
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/anime.jpg" />
+  <br>
+  Gambar 1. Anime
+</p>
 
 ## Data Preparation
 Dalam _data preparation_, prinsip **"_garbage in, garbage out_"** berlaku. Artinya, jika data yang digunakan untuk melatih model tidak berkualitas baik, maka hasil prediksi dari model tersebut juga akan tidak akurat atau tidak dapat diandalkan. Dengan memastikan data yang digunakan untuk melatih model memiliki kualitas yang baik, model yang dihasilkan dapat lebih andal dalam merekomendasikan anime.
