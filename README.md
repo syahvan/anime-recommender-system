@@ -70,7 +70,7 @@ Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan i
 Berikut adalah hasil **Exploratory Data Analysis* (EDA) menggunakan Analisis Univariat:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/1-top-komunitas-anime.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/1-top-komunitas-anime.png" />
   <br>
   Gambar 2. Top Komunitas Anime
 </p>
@@ -81,14 +81,14 @@ Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin 
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/2-distribusi-kategori-anime.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/2-distribusi-kategori-anime.png" />
   <br>
   Gambar 3. Distribusi Kategori Anime
 </p>
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/3-top-kategori-anime.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/3-top-kategori-anime.png" />
   <br>
   Gambar 4. Top Kategori Anime
 </p>
@@ -101,7 +101,7 @@ Death Note memiliki anggota komunitas tertinggi diikuti oleh Shingeki no Kyojin 
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/4-top-anime-rating.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/4-top-anime-rating.png" />
   <br>
   Gambar 5. Top Rating Anime
 </p>
@@ -112,7 +112,7 @@ Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitch
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/5-distribusi-rating-anime.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/5-distribusi-rating-anime.png" />
   <br>
   Gambar 6. Distribusi Rating Anime dan Distribusi Rating Anime yang Diberikan Oleh User
 </p>
@@ -126,14 +126,14 @@ Taka no Tsume 8 memiliki rating tertinggi diikuti oleh Spoon-hime no Swing Kitch
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-top-genre.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-top-genre.png" />
   <br>
   Gambar 7. Top Genre Anime
 </p>
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-wordcloud-genre.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/6-wordcloud-genre.png" />
   <br>
   Gambar 8. Wordcloud Genre
 </p>
@@ -193,6 +193,8 @@ Contoh seseorang yang telah menonton anime 'Naruto: Shippuuden'. Ia suka dengan 
 <p align="center">
     <br>
     <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/naruto.gif"/>
+    <br>
+    Gambar 9. Naruto
 </p>
 
 Maka, sistem akan merekomendasikan anime-anime yang memiliki kesamaan fitur dengan anime 'Naruto: Shippuuden'
@@ -236,6 +238,8 @@ Langkah Langkah dalam membangun model:
      - `num_users`: jumlah id user anime
      - `num_anime` : jumlah judul anime
      - `embedding_size` : Melakukan embbeding(penyematan) pada user_id dan anime_id ke dalam vektor 128 dimensi. 
+
+Hasilnya:
 
     ```
     Showing best anime recommendations for users: 1798
@@ -313,9 +317,9 @@ Berikut merupakan hasil dari _Root Mean Squared Error_ dari model dengan _Collab
 
 <p align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/rmse.jpg" />
+  <img src="https://raw.githubusercontent.com/syahvan/anime-recommender-system/main/img/rmse.png" />
   <br>
-  Gambar 9. Grafik Root Mean Squared Error dari model dengan Collaborative Filtering
+  Gambar 10. Grafik Root Mean Squared Error dari model dengan Collaborative Filtering
 </p>
 
 Dari grafik tersebut, terlihat bahwa nilai error akhir sebesar sekitar 0.13 dan error pada data validasi sebesar 0.13 pula. Nilai tersebut cukup bagus untuk sistem rekomendasi. Selain itu, nilai tersebut juga menandakan bahwa model tidak _overfitting_.
