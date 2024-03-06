@@ -1,4 +1,4 @@
-# Laporan Proyek _Anime Recommender System_ - Syahvan Alviansyah Diva Ritonga
+# Anime Recommender System
 ## Project Overview
 
 <p align="center">
